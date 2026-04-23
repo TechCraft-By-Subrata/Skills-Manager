@@ -141,11 +141,41 @@ export class WebviewManager {
       gap: 10px;
     }
     .controls .btn { flex: 1; }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .title-row h1 { margin-bottom: 0; }
+    .sponsor-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: #ea4aaa;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .sponsor-btn:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Skills Manager By TCBS</h1>
+    <div class="title-row">
+      <h1>Skills Manager By TCBS</h1>
+      <a class="sponsor-btn" href="https://github.com/sponsors/subraatakumar" target="_blank">
+        ♥ Sponsor
+      </a>
+    </div>
     
     <div id="message" class="message"></div>
 

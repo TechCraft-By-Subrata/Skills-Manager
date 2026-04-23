@@ -11,7 +11,7 @@
   "categories": ["Other"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/subraata-kumar/skills-manager-by-tcbs"
+    "url": "https://github.com/TechCraft-By-Subrata/Skills-Manager"
   },
   "activationEvents": ["onStartupFinished", "onView:skillsManager.dashboard"],
   "main": "./out/extension.js",
