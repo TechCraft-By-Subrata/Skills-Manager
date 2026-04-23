@@ -2,8 +2,9 @@
   "name": "skills-manager-by-tcbs",
   "displayName": "Skills Manager By TCBS",
   "description": "Sync GitHub Copilot agent skills from GitHub repositories into ~/.agents/skills/",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "publisher": "subraata-kumar",
+  "icon": "media/logo.png",
   "author": "Subrata Kumar Das",
   "engines": {
     "vscode": "^1.90.0"
@@ -39,7 +40,7 @@
         {
           "id": "skillsManager",
           "title": "Skills Manager By TCBS",
-          "icon": "media/skills-manager.svg"
+          "icon": "media/logo.png"
         }
       ]
     },
