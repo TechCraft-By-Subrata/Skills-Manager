@@ -1,0 +1,131 @@
+{
+  "name": "skills-manager-by-tcbs",
+  "displayName": "Skills Manager By TCBS",
+  "description": "Sync GitHub Copilot agent skills from GitHub repositories into ~/.agents/skills/",
+  "version": "0.3.3",
+  "publisher": "subraata-kumar",
+  "author": "Subrata Kumar Das",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Other"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subraata-kumar/skills-manager-by-tcbs"
+  },
+  "activationEvents": ["onStartupFinished", "onView:skillsManager.dashboard"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "skillsManager.openPanel",
+        "title": "Skills Manager: Manage Sources"
+      },
+      {
+        "command": "skillsManager.focus",
+        "title": "Skills Manager: Focus Dashboard"
+      },
+      {
+        "command": "skillsManager.sync",
+        "title": "Skills Manager: Sync Skills Now"
+      },
+      {
+        "command": "skillsManager.showStatus",
+        "title": "Skills Manager: Show Sync Status"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "skillsManager",
+          "title": "Skills Manager By TCBS",
+          "icon": "media/skills-manager.svg"
+        }
+      ]
+    },
+    "views": {
+      "skillsManager": [
+        {
+          "id": "skillsManager.dashboard",
+          "name": "Dashboard",
+          "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "skillsManager.sync",
+          "when": "view == skillsManager.dashboard",
+          "group": "navigation"
+        },
+        {
+          "command": "skillsManager.showStatus",
+          "when": "view == skillsManager.dashboard",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Skills Manager By TCBS",
+      "properties": {
+        "skillsManager.sources": {
+          "type": "array",
+          "default": [],
+          "markdownDescription": "List of GitHub repositories to sync skills from.",
+          "items": {
+            "type": "object",
+            "required": ["repo"],
+            "properties": {
+              "repo": {
+                "type": "string",
+                "description": "GitHub repo in owner/repo format, e.g. 'Azure/azure-github-copilot-skills'"
+              },
+              "path": {
+                "type": "string",
+                "default": "skills",
+                "description": "Path within the repo where skill folders live (default: 'skills')"
+              },
+              "branch": {
+                "type": "string",
+                "default": "main",
+                "description": "Branch to sync from (default: 'main')"
+              },
+              "token": {
+                "type": "string",
+                "description": "Optional GitHub personal access token for private repos. Prefer storing via 'skillsManager.setToken' command."
+              }
+            }
+          }
+        },
+        "skillsManager.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically sync skills on VS Code startup."
+        },
+        "skillsManager.syncIntervalHours": {
+          "type": "number",
+          "default": 24,
+          "description": "How often (in hours) to check for updates. Set to 0 to always sync on startup."
+        },
+        "skillsManager.skillsDir": {
+          "type": "string",
+          "default": "",
+          "description": "Override the skills directory. Defaults to ~/.agents/skills/"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.26.0"
+  }
+}
