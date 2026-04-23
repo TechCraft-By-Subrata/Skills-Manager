@@ -2,7 +2,7 @@
 
 A VS Code extension to sync GitHub Copilot agent skills from GitHub repositories into `~/.agents/skills/`.
 
-![Skills Manager Featured](media/featured.png)
+![Skills Manager Featured](https://raw.githubusercontent.com/TechCraft-By-Subrata/Skills-Manager/main/media/featured.png)
 
 ## Features
 
